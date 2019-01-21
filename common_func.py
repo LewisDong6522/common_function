@@ -57,6 +57,14 @@ def mapping_dict(word, dict_map):
     return dict_map
 
 
+def sh(cmd):
+    p = os.popen(cmd)
+    arg_p = []
+    for ele in p.readlines():
+        arg_p.append(ele.strip("\n"))
+    return arg_p
+
+
 def nowTime():
     """
     按照格式打印时间戳
