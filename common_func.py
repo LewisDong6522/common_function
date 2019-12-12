@@ -153,6 +153,24 @@ def merge_list(a, b):
     a.extend(b)
     return a
 
+
+def config_logging(fname):
+    if fname is None:
+        logging.basicConfig(level=logging.INFO, format='%(message)s')
+    else:
+        logging.basicConfig(level=logging.INFO,
+                            filename=fname,
+                            format='%(message)s',
+                            filemode='at')
+
+        # you have to manually define and add another handler
+        ch = logging.StreamHandler()
+        ch.setLevel(logging.INFO)
+        logging.getLogger("").addHandler(ch)
+
+    # since new log will be appended, so write a separator
+    logging.info("\n-------------------- [%s]", datetime.now().strftime("%y-%m-%d %H:%M:%S"))
+
 ########################################################################################################################
 
 
